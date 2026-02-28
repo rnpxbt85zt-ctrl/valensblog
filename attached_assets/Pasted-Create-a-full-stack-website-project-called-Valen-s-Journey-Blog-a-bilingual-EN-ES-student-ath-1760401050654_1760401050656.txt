@@ -1,0 +1,114 @@
+Create a full-stack website project called **Valen's Journey Blog**, a bilingual (EN/ES) student-athlete personal blog with a Notion-based CMS.
+
+---
+
+### 🌍 OVERVIEW
+A personal website for **Valen’s Journey**, an international student-athlete from Argentina living in the U.S., studying Business Administration and Marketing, competing in NCAA DII swimming.  
+The site should look **exactly like the attached reference (dark blue theme, modern, minimal)**.
+
+---
+
+### 🧱 STRUCTURE
+/public
+/css/style.css
+/js/script.js
+index.html --> About Me section
+articles.html --> List of blog posts
+contact.html --> Contact + Social links
+server.js --> Node.js server to fetch Notion data
+.env --> NOTION_TOKEN and DATABASE_ID
+
+yaml
+Copiar código
+
+---
+
+### 🎨 FRONTEND REQUIREMENTS
+1. **Design identical** to the reference image:
+   - Dark background (#0b132b)
+   - Light mode toggle 🌙/☀️
+   - Language toggle 🌐 (English/Spanish)
+   - Navigation bar:
+     - Logo: “Valen’s Journey”
+     - Links: About Me | Articles | Contact
+     - Right side: 🌐 + 🌙 buttons
+   - Hero title: *Valen’s Journey – Student-athlete journey: Swimming, Travel, Study and Personal Growth*
+   - Button under hero: **View Articles**
+   - Use Google Font “Poppins” or “Inter”
+   - Fully responsive (mobile + desktop)
+
+2. **About Me section** content:
+Hey! I’m Valen, an international student-athlete from Argentina living in the US. 😜 I am Double-majoring in Business Administration and Marketing.
+
+I’m a swimmer competing in the NCAA DII, as well as for my home club Unión de Santa Fe.
+
+Some of my hobbies are reading, learning new languages, swimming (of course 😉), traveling, journaling and waking up 5:00 am everyday 😅
+
+I am very passionate about the world of Businesses, and how ideas with hard work and consistency can change the world.
+
+Studying abroad opened my eyes to new cultures and ways of living, meeting people from all over the world. 🌎
+
+In this blog I will share a little bit about myself: from hard workouts, my daily routine, what it’s like to study in a different language, distance swimming, personal development, lifting, race strategy, book reviews, business, entrepreneurship, journaling, my experience as an international student in the U.S., travel reviews/blogs, etc!
+
+PD: my goal with this blog is to share my experiences to help other people who may be going through similar things, to motivate them, and to show a different perspective. This blog is a way to express myself while helping others.
+
+Social Media:
+https://www.instagram.com/valendefrutoss/
+https://www.tiktok.com/@valendefrutoss
+https://www.linkedin.com/in/valentin-de-frutos-b70a71255
+
+markdown
+Copiar código
+
+3. **Articles page (articles.html):**
+- Fetch posts dynamically from Notion API.
+- Display title, date, cover image, short summary.
+- Clicking a post opens it in a clean `article.html` template (same design).
+
+4. **Contact page:**
+- Show the same social media links.
+- Include a simple contact form (name, email, message → mailto or emailjs).
+
+5. **Dark/Light mode & language toggle:**
+- Stored in `localStorage`.
+- Change text content between EN/ES.
+
+---
+
+### ⚙️ BACKEND (Node.js / Express)
+- Use `express`, `axios`, and `dotenv`.
+- Fetch articles from Notion Database via Notion API.
+- Expose endpoint: `/api/articles` and `/api/article/:slug`.
+- Articles load automatically based on Notion’s database fields.
+
+---
+
+### 📘 NOTION CMS SETUP
+1. Create a Notion database with columns:
+- **Title** (title)
+- **Slug** (text)
+- **Published** (checkbox)
+- **PublishedAt** (date)
+- **Summary** (text)
+- **Cover** (files & media)
+- **Content** (rich text)
+2. Create a Notion integration at: https://www.notion.so/my-integrations
+3. Copy the **Internal Integration Token** → Replit Secrets as `NOTION_TOKEN`
+4. Copy your database ID → Replit Secrets as `DATABASE_ID`
+5. Share the database with the integration (full access)
+6. Server fetches only `Published = true` entries.
+
+---
+
+### 💡 EXTRA DETAILS
+- Include comments in code for clarity.
+- Clean, modern UI using plain HTML/CSS/JS (no frameworks).
+- All pages include the same navbar and footer.
+- Automatically switch dark/light mode smoothly.
+- Editable from Notion only — no manual code editing required for posts.
+- Ready to deploy on Replit or Vercel.
+
+---
+
+### ✅ GOAL
+Deliver a ready-to-run blog template for **Valen’s Journey**, fully editable via Notion CMS, bilingual, with dark/light mode, and modern design.
