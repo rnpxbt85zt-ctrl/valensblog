@@ -132,4 +132,3 @@ export const isAuthenticated: RequestHandler = (req, res, next) => {
   res.setHeader("WWW-Authenticate", "Basic");
   return res.status(401).send("Invalid credentials");
 };
- }
