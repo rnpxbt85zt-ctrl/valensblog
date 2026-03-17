@@ -70,42 +70,7 @@ function AdminNav() {
   );
 }
 
-function ProtectedAdminRoute({ component: Component }: { component: React.ComponentType }) {
-  const { isAuthenticated, isLoading } = useAuth();
-  const { toast } = useToast();
 
-  useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
-      toast({
-        title: "Authentication Required",
-        description: "Logging in...",
-        variant: "destructive",
-      });
-      setTimeout(() => {
-        window.location.href = "/api/login";
-      }, 500);
-    }
-  }, [isAuthenticated, isLoading, toast]);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Loading...</p>
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return null;
-  }
-
-  return (
-    <>
-      <AdminNav />
-      <Component />
-    </>
-  );
-}
 
 function Router() {
   return (
@@ -117,15 +82,9 @@ function Router() {
       <Route path="/contact" component={Contact} />
       
       {/* Admin routes */}
-      <Route path="/admin">
-        {() => <ProtectedAdminRoute component={AdminDashboard} />}
-      </Route>
-      <Route path="/admin/posts">
-        {() => <ProtectedAdminRoute component={AdminPosts} />}
-      </Route>
-      <Route path="/admin/posts/:id">
-        {() => <ProtectedAdminRoute component={AdminPostEditor} />}
-      </Route>
+     <Route path="/admin" component={AdminDashboard} />
+<Route path="/admin/posts" component={AdminPosts} />
+<Route path="/admin/posts/:id" component={AdminPostEditor} />
       
       <Route component={NotFound} />
     </Switch>
