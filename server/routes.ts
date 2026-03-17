@@ -231,7 +231,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(404).json({ error: "Image not found" });
     }
   });
-
+  
+app.get("/api/hello", (req, res) => {
+  res.json({ message: "Hola desde el servidor" });
+});
   const httpServer = createServer(app);
 
   return httpServer;
